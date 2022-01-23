@@ -16,11 +16,6 @@ Original data examples:
 
 ![image](https://github.com/jumpjack/Apollo11LEMdata/blob/master/001-vert-vel-01.png)
 
-Other sources of Apollo digital data:
- -  https://github.com/ivanstan/apollo-data/tree/release/data
- -  https://ntrs.nasa.gov/
- -  https://www.hq.nasa.gov/alsj/a11
-
 
 Acronyms and words useful for this search
 -----------------------------------------
@@ -42,11 +37,13 @@ Acronyms and words useful for this search
 Documents repositories
 ----------------------
 
-
  - https://ntrs.nasa.gov/
  - https://ui.adsabs.harvard.edu/
  - http://web.archive.org/
  - https://www.hq.nasa.gov/alsj/a11 
+ - https://www.hq.nasa.gov/alsj/alsj-descent.html
+ - https://github.com/ivanstan/apollo-data/tree/release/data
+ 
 
 Apollo 11 designations
 ----------------------
