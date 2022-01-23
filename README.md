@@ -17,6 +17,43 @@ Original data examples:
 ![image](https://github.com/jumpjack/Apollo11LEMdata/blob/master/001-vert-vel-01.png)
 
 Other sources of Apollo digital data:
- - https://github.com/ivanstan/apollo-data/tree/release/data
+ -  https://github.com/ivanstan/apollo-data/tree/release/data
+ -  https://ntrs.nasa.gov/
+ -  https://www.hq.nasa.gov/alsj/a11
+
+
+Acronyms and words useful for this search
+-----------------------------------------
+
+ - DPS
+ - Descent Propulsion System
+ - DAP
+ - Digital Auto Pilot
+ - PDI
+ - Powered Descent Insertion
+ - DM
+ - Descent Module
+ - LM
+ - Lunar Module
+ - Postflight trajectory analysis
+ - NAT
+ - NASA Apollo Trajectory
+
+Documents repositories
+----------------------
+
+
  - https://ntrs.nasa.gov/
- - https://www.hq.nasa.gov/alsj/a11
+ - https://ui.adsabs.harvard.edu/
+ - http://web.archive.org/
+ - https://www.hq.nasa.gov/alsj/a11 
+
+Apollo 11 designations
+----------------------
+
+ - Apollo 11 (or Apollo XI)
+ - AS-506
+ - LEM-5 (or LEM-5 or LM-5 or LM-05)
+ - G-Mission (or "Mission G")
+
+In some documents scans, "Apollo 11" became "Apollo II" and then finally "Apollo 2".
