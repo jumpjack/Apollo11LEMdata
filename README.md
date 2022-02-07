@@ -1,10 +1,18 @@
 **Apollo 11 LEM telemetry**
 
 Taken from:
- - [APOLLO MISSION 11, TRAJECTORY RECONSTRUCTION AND POSTFLIGHT ANALYSIS - VOLUME 1](https://ntrs.nasa.gov/citations/19700014995) (Appendix D contains LEM telemetry data - X, Y and Z gimbals plus range in feet)
+ - [Apollo 11 LM-5 Computer Words (AGC Telemetry)](https://archive.org/details/apollo_11_computer_words/mode/2up)  ([raw images](https://ia802308.us.archive.org/view_archive.php?archive=/27/items/apollo_11_computer_words/apollo_11_computer_words_jp2.zip))
+ - [Apollo 11 Lunar Landing Digital Simulation (1969)](https://archive.org/details/apollo11landingd00miti_0/mode/1up)  ([raw images](https://ia600608.us.archive.org/view_archive.php?archive=/1/items/apollo11landingd00miti_0/apollo11landingd00miti_0_jp2.zip))
+ - [Apollo 11 Lunar Landing Digital Simulation (1971)](https://archive.org/details/dianarev12level302eyle/mode/1up)  ([raw images](https://ia801602.us.archive.org/view_archive.php?archive=/25/items/dianarev12level302eyle/dianarev12level302eyle_jp2.zip))
+
+-------------
+
+- [APOLLO MISSION 11, TRAJECTORY RECONSTRUCTION AND POSTFLIGHT ANALYSIS - VOLUME 1](https://ntrs.nasa.gov/citations/19700014995) (Appendix D contains LEM telemetry data - X, Y and Z gimbals plus range in feet)
  -  [APOLLO 11 DAP POSTFLIGHT ANALYSIS](https://ntrs.nasa.gov/citations/19690031184) (NAS 9-8166 , 11176-H365-R0-00) (DAP = Digital Auto Pilot) (Errouneosly mentioned as "Apollo 2 DAP Postflight analysis)
  -  [Apollo 11 Preliminary Science Report](https://www.hq.nasa.gov/alsj/a11/as11psr.pdf) (NASA SP-214) [(other link)](https://ntrs.nasa.gov/citations/19700000726)
  -  [APOLLO EXPERIENCE REPORT, ENGINEERING AND ANALYSIS MISSION SUPPORT](https://ntrs.nasa.gov/citations/19750018953) (NASA-TN-D-7993, JSC-S-438)
+
+-------------
 
 Altitude plot reconstructed by automatic digitizing of original plot using [WebPlotDigitizer](https://automeris.io/WebPlotDigitizer/):
 
