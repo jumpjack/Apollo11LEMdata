@@ -2,8 +2,6 @@
 
 Taken from:
  - [Apollo 11 LM-5 Computer Words (AGC Telemetry)](https://archive.org/details/apollo_11_computer_words/mode/2up)  ([raw images](https://ia802308.us.archive.org/view_archive.php?archive=/27/items/apollo_11_computer_words/apollo_11_computer_words_jp2.zip))
- - [Apollo 11 Lunar Landing Digital Simulation (1969)](https://archive.org/details/apollo11landingd00miti_0/mode/1up)  ([raw images](https://ia600608.us.archive.org/view_archive.php?archive=/1/items/apollo11landingd00miti_0/apollo11landingd00miti_0_jp2.zip))
- - [Apollo 11 Lunar Landing Digital Simulation (1971)](https://archive.org/details/dianarev12level302eyle/mode/1up)  ([raw images](https://ia801602.us.archive.org/view_archive.php?archive=/25/items/dianarev12level302eyle/dianarev12level302eyle_jp2.zip))
 
 -------------
 
@@ -62,3 +60,9 @@ Apollo 11 designations
  - G-Mission (or "Mission G")
 
 In some documents scans, "Apollo 11" became "Apollo II" and then finally "Apollo 2".
+
+## Other resources
+
+ - [Apollo 11 Lunar Landing Digital Simulation (1969)](https://archive.org/details/apollo11landingd00miti_0/mode/1up)  ([raw images](https://ia600608.us.archive.org/view_archive.php?archive=/1/items/apollo11landingd00miti_0/apollo11landingd00miti_0_jp2.zip))
+ - [Apollo 11 Lunar Landing Digital Simulation (1971)](https://archive.org/details/dianarev12level302eyle/mode/1up)  ([raw images](https://ia801602.us.archive.org/view_archive.php?archive=/25/items/dianarev12level302eyle/dianarev12level302eyle_jp2.zip))
+
