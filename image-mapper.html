@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Image mapper</title>
+
+  </head>
+  <body>
+	<table border=1>
+	<tr>
+<td></td><td><canvas id="cnvRulerX" name="cnvRulerX"></td>
+</tr>
+	<tr>
+<td><canvas id="cnvRulerY" name="cnvRulerY"></td>
+<td><img src="Lunar_Module_Control_Displays.jpg" id="baseImage" name="baseImage" onclick = "getPos()"></td>
+<td><canvas id ="cnvZoomed" name="cnvZoomed" width="500" height="500"></td>
+</tr>
+<tr>
+<td></td>
+<td><center>Coords: <span id="spnX" name="spnX">-</span>, <span id="spnY" name="spnY">-</span></center></td>
+<td><span id="spnX2" name = "spnX2">-</span>,<span id="spnY2" name = "spnY2">-</span><br>Label:
+<input type="text" name="controlLabel" id="controlLabel" size="40"> <button onclick = "controlLabel.value=''">Clear</button><br>
+Panel: <input type="text" name="controlPanel" id="controlPanel" size="40"> <button onclick = "controlPanel.value=''">Clear</button><br>
+Type: <input type="text" name="controlType" id="controlType" size="40"> <button onclick = "controlType.value=''">Clear</button><br>
+Notes: <input type="text" name="controlNotes" id="controlNotes" size="40"> <button onclick = "controlNotes.value=''">Clear</button><br>
+<button onclick="storeData()">Save</button>
+<button onclick = "realTime=true">Free</button></td>
+</table><br>
+<textarea id="output" name="output" cols = 100 rows = 10></textarea><br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+X=0;
+Y=0;
+factor = 5;
+ZOOMWIDTH = 500;
+ZOOMHEIGHT = 500;
+IMAGE_OFFSET_X = 45;
+IMAGE_OFFSET_Y = 52;
+XSTEP = 475;
+YSTEP = 364;
+RULER_WIDTH = 50;
+ascissa = ["L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A"];
+ordinata = [8,7,6,5,4,3,2,1]
+realTime = true;
+
+
+canvasZoom = document.getElementById("cnvZoomed");
+ctxZoom = canvasZoom.getContext("2d");
+myImage = document.getElementById("baseImage");
+
+canvasRulerX = document.getElementById("cnvRulerX");
+canvasRulerX.width = myImage.width/ factor;
+canvasRulerX.height = RULER_WIDTH;
+ctxRulerX = canvasRulerX.getContext("2d");
+
+canvasRulerY = document.getElementById("cnvRulerY");
+canvasRulerY.width = RULER_WIDTH;
+canvasRulerY.height = myImage.height/ factor;
+ctxRulerY = canvasRulerY.getContext("2d");
+
+  $(document).ready(function() {
+
+		realWidth = myImage.width;
+		console.log(realWidth, myImage.width);
+		myImage.width = realWidth/factor;
+		console.log(realWidth,myImage.width);
+
+    $("#baseImage").mousemove(function(event){ // Show an enlarged version of a crop of the area of the image surrounding the mouse
+
+			if (!realTime) return; // Realtime update of zoom are is disabled upon clicking mouse
+
+      X = event.pageX - $(this).offset().left;
+      Y = event.pageY - $(this).offset().top;
+
+			X *= factor; // Because image can be displayed reduced
+			Y *= factor;
+
+		//	X -= IMAGE_OFFSET_X; // Because top-left corner of image could not match with 0,0 point
+		//	Y -= IMAGE_OFFSET_Y;
+
+			quadrantX = Math.round(X / XSTEP + 0.5) - 1; // Converts real coordinates in Letter/number coordinate according to ruler drawn on image
+			quadrantY = Math.round(Y / YSTEP + 0.5) - 1;
+//console.log(X, quadrantX, Y, quadrantY, ascissa[quadrantX], ordinata[quadrantY]);
+
+	spnX2.innerHTML = ascissa[quadrantX];
+	spnY2.innerHTML = ordinata[quadrantY];
+
+      drawRuler();
+
+			// Delete old image
+			ctxZoom.fillStyle = "#FFFFFF";
+      ctxZoom.strokeStyle = "#FF0000";
+			ctxZoom.fillRect(0,0,ZOOMWIDTH,ZOOMHEIGHT );
+
+			// Draw new cropping:
+			ctxZoom.drawImage(myImage, X - ZOOMWIDTH/2 , Y - ZOOMWIDTH/2, ZOOMWIDTH, ZOOMHEIGHT, 0, 0, ZOOMWIDTH, ZOOMHEIGHT);
+
+			// Shnow raw coordinates
+			spnX.innerHTML = X.toFixed(0);
+			spnY.innerHTML = Y.toFixed(0);
+
+			// Overwrite a red cross at center of the zoomed image
+			ctxZoom.beginPath();
+			ctxZoom.moveTo(ZOOMWIDTH/2 - 20 , ZOOMHEIGHT/2);
+			ctxZoom.lineTo(ZOOMWIDTH/2 + 20 , ZOOMHEIGHT/2);
+			ctxZoom.stroke();
+
+			ctxZoom.beginPath();
+			ctxZoom.moveTo(ZOOMWIDTH/2  , ZOOMHEIGHT/2 -20);
+			ctxZoom.lineTo(ZOOMWIDTH/2  , ZOOMHEIGHT/2 + 20);
+			ctxZoom.stroke();
+
+      ctxZoom.strokeStyle = "#0000FF";
+
+for (var i = 0; i <= ordinata.length; i++) {
+	yfinal = -Y + i*(YSTEP+6) + -115;
+	ctxZoom.beginPath();ctxZoom.moveTo(10,yfinal);ctxZoom.lineTo(1000,yfinal);ctxZoom.stroke();
+}
+
+for (var i = 0; i <= ascissa.length; i++) {
+	xfinal = -X + i*(XSTEP) + ZOOMWIDTH/2;
+	ctxZoom.beginPath();ctxZoom.moveTo(xfinal, 0);ctxZoom.lineTo(xfinal, 1000);ctxZoom.stroke();
+}
+console.log(yfinal);
+    });
+  });
+
+
+function getPos() {
+	// Upon clicking mouse, get and show the quadrant-coordinates which will be associated to label
+  realTime = false; // Lock the zoomed image, to allow easy repositioning of the mouse on last clicked point
+
+console.log(X,Y);
+
+	drawRuler();
+
+}
+
+
+function drawRuler() {
+	// Clear horizontal ruler
+	ctxRulerX.fillStyle = "#FFFF";
+	ctxRulerX.fillRect(0,0,canvasRulerX.width,canvasRulerX.height );
+
+	// Redraw marker on horizontal ruler
+  ctxRulerX.strokeStyle = "#000000";
+
+	ctxRulerX.beginPath();
+	ctxRulerX.moveTo(X/factor , 0);
+	ctxRulerX.lineTo(X/factor , 100);
+	ctxRulerX.stroke();
+
+	// Clear vertical ruler
+	ctxRulerY.fillStyle = "#FFFF";
+	ctxRulerY.fillRect(0,0,canvasRulerY.width,canvasRulerY.height );
+
+	// Redraw marker on vertical ruler
+	ctxRulerY.beginPath();
+	ctxRulerY.moveTo(0, Y/factor);
+	ctxRulerY.lineTo(100, Y/factor);
+	ctxRulerY.stroke();
+}
+
+function storeData() {
+	// Store in the textarea the label and its coordinates
+	output.value += "\n{" +
+	' "label" : "' +
+	controlLabel.value +
+	'" , ' +
+
+	' "panel" : "' +
+	controlPanel.value +
+	'" , ' +
+
+	' "type" : "' +
+	controlType.value +
+	'" , ' +
+
+	' "notes" : "' +
+	controlNotes.value +
+	'" , ' +
+
+	'"x" : ' +
+	ascissa[quadrantX] +
+	' , "y" : ' +
+	ordinata[quadrantY] +
+	"},";
+ // realTime = true;
+}
+</script>
+  </body>
+</html>
